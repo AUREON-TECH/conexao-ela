@@ -58,7 +58,7 @@ type StorageObject = {
 type RequestOptions = RequestInit & { retry?: boolean }
 
 export function isValidNewPassword(password: string) {
-  return password.length >= 10 && password.length <= 128
+  return password.length >= 6 && password.length <= 128
 }
 
 export function isProjectAdminRole(role: ProjectRole | undefined) {
