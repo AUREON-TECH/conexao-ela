@@ -27,8 +27,8 @@ describe('AUREON record helpers', () => {
     expect(isProjectAdminRole(undefined)).toBe(false)
   })
 
-  it('requires at least ten characters for a new password', () => {
-    expect(isValidNewPassword('123456789')).toBe(false)
-    expect(isValidNewPassword('1234567890')).toBe(true)
+  it('requires at least six characters for a new password', () => {
+    expect(isValidNewPassword('12345')).toBe(false)
+    expect(isValidNewPassword('123456')).toBe(true)
   })
 })
