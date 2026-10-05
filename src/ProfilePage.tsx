@@ -150,7 +150,7 @@ export function ProfilePage({ userId, email, onLogout, onPasswordChanged }: Prop
   async function changePassword(event: FormEvent) {
     event.preventDefault()
     setPasswordError(''); setPasswordMessage('')
-    if (newPassword.length < 10) return setPasswordError('A nova senha precisa ter pelo menos 10 caracteres.')
+    if (newPassword.length < 6) return setPasswordError('A nova senha precisa ter pelo menos 6 caracteres.')
     if (newPassword !== confirmPassword) return setPasswordError('As novas senhas não são iguais.')
     if (newPassword === currentPassword) return setPasswordError('Escolha uma senha diferente da atual.')
     setChangingPassword(true)
@@ -259,8 +259,8 @@ export function ProfilePage({ userId, email, onLogout, onPasswordChanged }: Prop
         <form className="form-stack compact-stack" onSubmit={changePassword}>
           <label className="field"><span>Senha atual</span><input type="password" autoComplete="current-password" value={currentPassword} onChange={(e) => setCurrentPassword(e.target.value)} required /></label>
           <div className="two-columns">
-            <label className="field"><span>Nova senha</span><input type="password" autoComplete="new-password" minLength={10} value={newPassword} onChange={(e) => setNewPassword(e.target.value)} required /></label>
-            <label className="field"><span>Confirmar nova senha</span><input type="password" autoComplete="new-password" minLength={10} value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} required /></label>
+            <label className="field"><span>Nova senha</span><input type="password" autoComplete="new-password" minLength={6} value={newPassword} onChange={(e) => setNewPassword(e.target.value)} required /></label>
+            <label className="field"><span>Confirmar nova senha</span><input type="password" autoComplete="new-password" minLength={6} value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} required /></label>
           </div>
           {passwordError && <div className="form-message error">{passwordError}</div>}
           {passwordMessage && <div className="form-message success">{passwordMessage}</div>}
