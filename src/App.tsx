@@ -24,7 +24,7 @@ function signupErrorMessage(error: SignupError) {
   const messages: Record<SignupError, string> = {
     name_required: 'Digite seu nome.',
     invalid_email: 'Digite um e-mail válido.',
-    invalid_password: 'Sua senha precisa ter entre 10 e 128 caracteres.',
+    invalid_password: 'Sua senha precisa ter entre 6 e 128 caracteres.',
     password_mismatch: 'As senhas não são iguais.',
     terms_required: 'Aceite os termos e as regras da comunidade para continuar.',
   }
@@ -122,10 +122,10 @@ function AuthScreen({ onLogin }: { onLogin: (user: AureonUser, notice?: string) 
             <label className="field"><span>Nome</span><input type="text" autoComplete="name" value={name} onChange={(e) => setName(e.target.value)} maxLength={80} required /></label>
           )}
           <label className="field"><span>E-mail</span><input type="email" autoComplete="email" value={email} onChange={(e) => setEmail(e.target.value)} required /></label>
-          <label className="field"><span>Senha</span><input type="password" autoComplete={mode === 'login' ? 'current-password' : 'new-password'} minLength={mode === 'signup' ? 10 : undefined} value={password} onChange={(e) => setPassword(e.target.value)} required /></label>
+          <label className="field"><span>Senha</span><input type="password" autoComplete={mode === 'login' ? 'current-password' : 'new-password'} minLength={mode === 'signup' ? 6 : undefined} value={password} onChange={(e) => setPassword(e.target.value)} required /></label>
           {mode === 'signup' && (
             <>
-              <label className="field"><span>Confirmar senha</span><input type="password" autoComplete="new-password" minLength={10} value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} required /></label>
+              <label className="field"><span>Confirmar senha</span><input type="password" autoComplete="new-password" minLength={6} value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} required /></label>
               <label className="terms-row"><input type="checkbox" checked={acceptedTerms} onChange={(e) => setAcceptedTerms(e.target.checked)} /><span>Li e aceito os termos e as regras da comunidade.</span></label>
             </>
           )}
