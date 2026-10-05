@@ -22,8 +22,8 @@ describe('Conexão Ela signup validation', () => {
     expect(validateSignup({ ...valid, email: 'email-invalido' })).toEqual({ valid: false, error: 'invalid_email' })
   })
 
-  it('requires a password between 10 and 128 characters', () => {
-    expect(validateSignup({ ...valid, password: '123456789', confirmPassword: '123456789' })).toEqual({ valid: false, error: 'invalid_password' })
+  it('requires a password between 6 and 128 characters', () => {
+    expect(validateSignup({ ...valid, password: '12345', confirmPassword: '12345' })).toEqual({ valid: false, error: 'invalid_password' })
   })
 
   it('requires matching password confirmation', () => {
