@@ -132,7 +132,7 @@ export function ProfilePage({ userId, email, onLogout, onPasswordChanged }: Prop
     try {
       const prepared = await compressProfileImage(file)
       // Write to a new object first: a failed upload must never delete the current avatar.
-      const key = profilePhotoKey(userId, 'jpeg').replace(/\\.jpeg$/, `-${crypto.randomUUID()}.jpeg`)
+      const key = profilePhotoKey(userId, 'jpeg').replace(/\.jpeg$/, `-${crypto.randomUUID()}.jpeg`)
       await aureon.storage.upload('profile', key, prepared.base64, prepared.contentType)
       const next = { ...profile, photo_key: key, photo_content_type: prepared.contentType }
       // Only switch the visible avatar after the profile reference has been saved.
